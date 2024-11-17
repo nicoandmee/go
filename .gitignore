@@ -1,17 +1,15 @@
-# general
+# core
 .DS_Store
 .env
 .env*.local
 output
 dist
+target
 .idea
-
-# ts
 node_modules
 package-lock.json
 pnpm-lock.yaml
-
-# other
-past.*
-private.*
+.vercel
 private
+private.*
+past.*
