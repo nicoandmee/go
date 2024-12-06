@@ -10,15 +10,15 @@ import (
 	"github.com/bogdanfinn/tls-client/profiles"
 )
 
-func main() {
+func bogdafinnRequest() {
 	jar := tls_client.NewCookieJar()
 	options := []tls_client.HttpClientOption{
 		tls_client.WithTimeoutSeconds(30),
 		tls_client.WithClientProfile(profiles.Chrome_131),
 		tls_client.WithNotFollowRedirects(),
 		tls_client.WithCookieJar(jar), // create cookieJar instance and pass it as argument
-		//tls_client.WithProxyUrl("http://user:pass@host:port"),
-		//tls_client.WithInsecureSkipVerify(),
+		tls_client.WithProxyUrl("http://localhost:9090"),
+		tls_client.WithInsecureSkipVerify(),
 	}
 
 	client, err := tls_client.NewHttpClient(tls_client.NewNoopLogger(), options...)
