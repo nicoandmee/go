@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"encoding/base64"
 	"encoding/csv"
+	"encoding/json"
+
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -21,7 +23,68 @@ const (
 	pollInterval = 5 * time.Second // Poll every 5 seconds
 )
 
-func main() {
+func checkCard() {
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+
+	// Parse the input
+	details := strings.Split(strings.TrimSpace(input), ";")
+	if len(details) < 3 {
+		fmt.Println("Invalid input format.")
+		return
+	}
+
+	cardNumber := details[0]
+	expiry := strings.Split(details[1], "/")
+	expMonth := expiry[0]
+	expYear := expiry[1]
+	cvv := details[2]
+
+	gologger.Info().Msgf("Card Number: %s\n", cardNumber)
+	gologger.Info().Msgf("Expiry: %s/%s\n", expMonth, expYear)
+	gologger.Info().Msgf("CVV: %s\n", cvv)
+	gologger.Info().Msgf("API Key: %s\n", apiKey)
+
+	// Construct the API request
+	apiURL := fmt.Sprintf("%s/apiv2/ck.php", apiMirror)
+
+	data := url.Values{
+		"cardnum":  {cardNumber},
+		"expm":     {expMonth},
+		"expy":     {expYear},
+		"cvv":      {cvv},
+		"key":      {apiKey},
+		"username": {username},
+	}
+
+	gologger.Info().Msgf("Payload: %s\n", data.Encode())
+	// Send the request
+	resp, err := http.PostForm(apiURL, data)
+
+	if err != nil {
+		fmt.Printf("Error sending request: %s\n", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	// Decode the JSON response
+	var result map[string]interface{}
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		fmt.Printf("Error decoding response: %s\n", err)
+		return
+	}
+
+	// Pretty print the response
+	jsonBytes, err := json.MarshalIndent(result, "", "  ")
+	if err != nil {
+		fmt.Printf("Error marshalling JSON: %s\n", err)
+		return
+	}
+	fmt.Println(string(jsonBytes))
+}
+
+
+func parseCardsForUndef() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter card details: ")
 	input, err := reader.ReadString('\n')
@@ -112,7 +175,7 @@ func main() {
 	}
 }
 
-func sendRequest(apiURL string, data url.Values) (string, error) {
+func sendUndefRequest(apiURL string, data url.Values) (string, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("POST", apiURL, strings.NewReader(data.Encode()))
 	if err != nil {

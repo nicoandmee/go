@@ -1,12 +1,17 @@
-module github.com/nikitavoloboev/go
+module github.com/nicoandmee/go
 
 go 1.23.0
 
-require github.com/JohannesKaufmann/html-to-markdown/v2 v2.2.1
+require (
+	github.com/JohannesKaufmann/html-to-markdown/v2 v2.2.1
+	github.com/bogdanfinn/fhttp v0.5.30
+	github.com/bogdanfinn/tls-client v1.7.10
+	github.com/gospider007/requests v0.0.0-20241201014459-179dd44b56cb
+	github.com/projectdiscovery/gologger v1.1.34
+	github.com/spf13/cobra v1.8.1
+)
 
 require (
-	github.com/Carcraftz/fhttp v0.0.0-20220112175241-f36cd20af880 // indirect
-	github.com/Carcraftz/utls v0.0.0-20220413235215-6b7c52fd78b6 // indirect
 	github.com/JohannesKaufmann/dom v0.1.1-0.20240706125338-ff9f3b772364 // indirect
 	github.com/PuerkitoBio/goquery v1.10.0 // indirect
 	github.com/STARRY-S/zip v0.2.1 // indirect
@@ -15,8 +20,6 @@ require (
 	github.com/bodgit/plumbing v1.3.0 // indirect
 	github.com/bodgit/sevenzip v1.6.0 // indirect
 	github.com/bodgit/windows v1.0.1 // indirect
-	github.com/bogdanfinn/fhttp v0.5.30 // indirect
-	github.com/bogdanfinn/tls-client v1.7.10 // indirect
 	github.com/bogdanfinn/utls v1.6.2 // indirect
 	github.com/caddyserver/certmagic v0.21.4 // indirect
 	github.com/caddyserver/zerossl v0.1.3 // indirect
@@ -38,7 +41,6 @@ require (
 	github.com/gospider007/ja3 v0.0.0-20240620005139-f0602f169903 // indirect
 	github.com/gospider007/kinds v0.0.0-20240929092451-8f867acde255 // indirect
 	github.com/gospider007/re v0.0.0-20240227100911-e27255e48eff // indirect
-	github.com/gospider007/requests v0.0.0-20241201014459-179dd44b56cb // indirect
 	github.com/gospider007/tools v0.0.0-20241120013952-ff42051bfc9f // indirect
 	github.com/gospider007/websocket v0.0.0-20241124120236-8003dd5900c3 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -46,7 +48,6 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/juzeon/spoofed-round-tripper v0.1.1 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
 	github.com/klauspost/pgzip v1.2.6 // indirect
@@ -62,18 +63,14 @@ require (
 	github.com/nwaples/rardecode/v2 v2.0.1 // indirect
 	github.com/onsi/ginkgo/v2 v2.22.0 // indirect
 	github.com/pierrec/lz4/v4 v4.1.21 // indirect
-	github.com/projectdiscovery/gologger v1.1.34 // indirect
-	github.com/projectdiscovery/ratelimit v0.0.64 // indirect
 	github.com/projectdiscovery/utils v0.4.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/quic-go/quic-go v0.48.2 // indirect
 	github.com/refraction-networking/uquic v0.0.6 // indirect
 	github.com/refraction-networking/utls v1.6.7 // indirect
 	github.com/sorairolake/lzip-go v0.3.5 // indirect
-	github.com/spf13/cobra v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tam7t/hpkp v0.0.0-20160821193359-2b70b4024ed5 // indirect
-	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569 // indirect
 	github.com/therootcompany/xz v1.0.1 // indirect
 	github.com/tidwall/gjson v1.18.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
@@ -81,8 +78,6 @@ require (
 	github.com/ulikunitz/xz v0.5.12 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 	github.com/zeebo/blake3 v0.2.4 // indirect
-	gitlab.com/yawning/bsaes.git v0.0.0-20190805113838-0a714cd429ec // indirect
-	gitlab.com/yawning/utls.git v0.0.12-1 // indirect
 	go.mongodb.org/mongo-driver v1.17.1 // indirect
 	go.uber.org/mock v0.5.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect

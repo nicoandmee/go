@@ -16,12 +16,9 @@ func fetchBody(url string) (string, error) {
 	defer resp.Body.Close()
 }
 
-func main() {
+func convertToMarkdown() {
 	// TODO: Fetch from URL provided as positional argument
-
-
 	input := `<strong>Bold Text</strong>`
-
 	markdown, err := htmltomarkdown.ConvertString(input)
 	if err != nil {
 		log.Fatal(err)
